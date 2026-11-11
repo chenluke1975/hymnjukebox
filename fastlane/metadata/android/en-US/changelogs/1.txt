@@ -1,0 +1,1 @@
+First release: number pad (opens the official mygoodland.video accompaniment page), album previews with a queue, title search, favorites.

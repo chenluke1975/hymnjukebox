@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <!-- open hymn book -->
+    <path android:fillColor="#FFFFFF" android:pathData="M28,40 Q41,35 54,41 L54,78 Q41,72 28,77 Z" />
+    <path android:fillColor="#E8EEF7" android:pathData="M80,40 Q67,35 54,41 L54,78 Q67,72 80,77 Z" />
+    <!-- music note -->
+    <path android:fillColor="#F2B84B"
+        android:pathData="M60,26 L76,22 L76,31 L64,33 Z M60,26h4v26h-4z M72,22.5h4v29.5h-4z M66,51 a6,5 0 1,0 12,0 a6,5 0 1,0 -12,0 Z M54,55 a6,5 0 1,0 12,0 a6,5 0 1,0 -12,0 Z" />
+    <!-- lines -->
+    <path android:fillColor="#1E5AA8" android:pathData="M33,49h16v2.5h-16z M33,56h16v2.5h-16z M33,63h12v2.5h-12z" />
+</vector>

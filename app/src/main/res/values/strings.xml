@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">詩歌點唱機</string>
+    <string name="channel_name">播放控制</string>
+    <string name="owner_short">台灣福音書房</string>
+    <string name="owner_note">詩歌內容屬台灣福音書房所有，本 App 只從其官方網站串流播放，不收錄任何音檔、歌詞或樂譜。</string>
+    <string name="streamed_from">從台灣福音書房官網串流</string>
+
+    <string name="tab_number">點歌</string>
+    <string name="tab_albums">試聽</string>
+    <string name="tab_search">搜尋</string>
+    <string name="tab_favorites">最愛</string>
+    <string name="about">說明</string>
+
+    <string name="clear">清除</string>
+    <string name="open_hymn">▶ 開啟這首</string>
+    <string name="fav_add">☆ 最愛</string>
+    <string name="type_number">請先按數字輸入第幾首</string>
+    <string name="fav_added">已加入最愛</string>
+    <string name="fav_removed">已從最愛移除</string>
+    <string name="number_placeholder">%1$s 第＿首</string>
+    <string name="hymn_title">%1$s 第 %2$d 首</string>
+    <string name="number_hint">先選「詩歌／補充本／兒童詩歌」，再按號碼，然後按「開啟這首」。會打開福音書房「影音美地」的詩歌伴奏網頁並自動找到這一首；那裡需要登入並訂閱才能播放。</string>
+
+    <string name="prev_hymn">◀ 上一首</string>
+    <string name="next_hymn">下一首 ▶</string>
+    <string name="close">關閉</string>
+    <string name="goodland_note">這是福音書房官方「影音美地」網頁。第一次請登入你的帳號；需有效訂閱才能播放伴奏。</string>
+    <string name="no_such_hymn">官網沒有「%1$s 第 %2$d 首」的伴奏</string>
+    <string name="not_on_page">網頁上找不到這一首，請在網頁中自己點選</string>
+
+    <string name="albums_intro">以下是福音書房官網各詩歌專輯的「線上試聽」，免費、免登入，直接從官網播放。</string>
+    <string name="filter_hint">輸入專輯名稱篩選</string>
+    <string name="reload">重新從官網載入</string>
+    <string name="loading">載入中，請稍候…</string>
+    <string name="net_error">連不上福音書房官網，請確認網路後再試。</string>
+    <string name="no_results">沒有符合的結果</string>
+    <string name="play">▶ 播放</string>
+    <string name="enqueue">＋ 排隊</string>
+    <string name="tracks">曲目</string>
+    <string name="no_tracks">（官網沒有列出曲目）</string>
+    <string name="has_preview">有線上試聽</string>
+    <string name="no_preview">此專輯官網沒有試聽</string>
+    <string name="open_store_page">官網頁面</string>
+    <string name="enqueued">已排入播放清單（共 %1$d 個）</string>
+
+    <string name="search_hint">輸入歌名或幾個字</string>
+    <string name="search">🔍 搜尋</string>
+    <string name="search_intro">可搜尋專輯名稱、專輯曲目，以及官網上有標示歌名的詩歌伴奏。第一次使用請先按下面的按鈕，從官網讀取歌名（約需 3 分鐘，之後就很快）。</string>
+    <string name="build_index">從官網讀取歌名</string>
+    <string name="src_goodland">影音美地 詩歌伴奏</string>
+    <string name="src_album">專輯試聽</string>
+    <string name="no_results_index">找不到。若還沒讀取歌名，請先按「從官網讀取歌名」。</string>
+    <string name="index_progress">讀取中 %1$d / %2$d …</string>
+    <string name="index_done">完成：已讀取 %1$d 頁，失敗 %2$d 頁</string>
+
+    <string name="no_favorites">還沒有最愛。在「點歌」按「☆ 最愛」或在「試聽」按 ☆ 加入。</string>
+    <string name="fav_remove_q">要從最愛移除「%1$s」嗎？</string>
+    <string name="remove">移除</string>
+    <string name="cancel">取消</string>
+    <string name="recent">最近點過</string>
+
+    <string name="queue">清單</string>
+    <string name="queue_empty">播放清單是空的，請到「試聽」選專輯</string>
+    <string name="clear_queue">清空清單</string>
+    <string name="now_playing">%1$d/%2$d　%3$s</string>
+    <string name="nothing_playing">尚未播放</string>
+    <string name="queue_ready">清單有 %1$d 個，按 ▶ 開始</string>
+    <string name="status_playing">播放中（從官網串流）</string>
+    <string name="status_paused">已暫停</string>
+    <string name="status_loading">連線到官網…</string>
+    <string name="status_net_error">播放失敗：連不上官網</string>
+    <string name="status_no_preview">這張專輯官網沒有試聽</string>
+    <string name="status_done">清單已播完</string>
+    <string name="status_last">已經是最後一個</string>
+    <string name="prev">上一首</string>
+    <string name="pause">暫停</string>
+    <string name="next">下一首</string>
+    <string name="stop">停止</string>
+
+    <string name="about_title">關於詩歌點唱機</string>
+    <string name="about_text">詩歌點唱機是一個簡單的大按鈕播放器，內容全部來自財團法人台灣福音書房的官方網站，版權屬於台灣福音書房。本 App 不收錄、不下載、不轉存任何音檔、歌詞或樂譜。\n\n• 點歌：輸入詩歌號碼，打開官方「影音美地」(mygoodland.video) 的詩歌伴奏網頁並找到該首。影音美地是福音書房的付費訂閱服務，需要用你自己的帳號登入並訂閱才能播放。\n\n• 試聽：播放福音書房商店 (twgbr.org.tw) 各詩歌專輯公開的「線上試聽」片段，免費、免登入。\n\n• 若想免費依號碼聽整本詩歌伴奏，可使用福音書房官方的 App。\n\n本 App 為個人開發的開源軟體 (MIT)，與台灣福音書房無關，也不是其官方產品。</string>
+    <string name="ok">知道了</string>
+    <string name="open_official">開啟官網</string>
+    <string name="no_browser">找不到瀏覽器</string>
+</resources>

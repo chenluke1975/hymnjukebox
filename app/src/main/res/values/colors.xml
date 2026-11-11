@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="paper">#EDF1F6</color>
+    <color name="card">#FFFFFF</color>
+    <color name="ink">#15202B</color>
+    <color name="muted">#566270</color>
+    <color name="line">#D5DCE4</color>
+    <color name="primary">#1E5AA8</color>
+    <color name="primary_dark">#164682</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="secondary">#DCE6F3</color>
+    <color name="ic_launcher_background">#1E5AA8</color>
+    <color name="accent">#F2B84B</color>
+</resources>
