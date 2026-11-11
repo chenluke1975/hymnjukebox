@@ -6,7 +6,8 @@ import java.net.URLDecoder
 enum class Book(val code: String, val zh: String, val en: String) {
     HYMNS("詩", "詩歌", "Hymns"),
     SUPPLEMENT("補", "補充本", "Supplement"),
-    CHILDREN("兒", "兒童詩歌", "Children");
+    CHILDREN("兒", "兒童詩歌", "Children"),
+    NEW_HYMNS("新", "新詩歌", "New Hymns");
 
     companion object {
         fun fromCode(c: String): Book? = entries.firstOrNull { it.code == c }

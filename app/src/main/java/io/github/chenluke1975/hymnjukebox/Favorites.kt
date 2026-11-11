@@ -6,11 +6,17 @@ import org.json.JSONObject
 
 /** A favorite is either a numbered hymn (opened on 影音美地) or a store album preview. */
 data class Favorite(val kind: String, val title: String, val book: Book? = null, val number: Int = 0, val path: String = "") {
-    val key: String get() = if (kind == KIND_HYMN) "h:${book?.name}:$number" else "a:$path"
+    val key: String get() = when (kind) {
+        KIND_HYMN -> "h:${book?.name}:$number"
+        KIND_LOCAL -> "l:$path"
+        else -> "a:$path"
+    }
 
     companion object {
         const val KIND_HYMN = "hymn"
         const val KIND_ALBUM = "album"
+        const val KIND_LOCAL = "local"
+        fun local(s: LocalSong, label: String) = Favorite(KIND_LOCAL, label, s.book, s.number ?: 0, s.uri)
         fun hymn(book: Book, number: Int, title: String = "") = Favorite(KIND_HYMN, title, book, number)
         fun album(a: Album) = Favorite(KIND_ALBUM, a.title, path = a.path)
     }

@@ -2,8 +2,8 @@
 
 # 詩歌點唱機 Hymn Jukebox
 
-大按鈕、操作簡單的詩歌播放器。所有內容都來自**台灣福音書房**的官方網站，並從官網直接串流；本 App 不收錄任何音檔、歌詞或樂譜。
-A big-button hymn player. Everything comes from, and is streamed directly from, the official websites of **Taiwan Gospel Book Room (TWGBR)**. The app bundles no audio, lyrics or scores.
+大按鈕、操作簡單的詩歌播放器：按號碼播放**你自己手機裡的詩歌音檔**，或從**台灣福音書房**官方網站直接串流。本 App 不收錄任何音檔、歌詞或樂譜。
+A big-button hymn player: plays **your own hymn audio files** by number, or streams directly from the official websites of **Taiwan Gospel Book Room (TWGBR)**. The app bundles no audio, lyrics or scores.
 
 > 本 App 為個人開發的開源軟體，與財團法人台灣福音書房無關，也不是其官方產品。詩歌的著作權屬於台灣福音書房。
 > Independent open-source software, not affiliated with or endorsed by Taiwan Gospel Book Room, which owns the copyright of the hymns.
@@ -13,6 +13,14 @@ A big-button hymn player. Everything comes from, and is streamed directly from, 
 ## 中文說明
 
 ### 功能
+- **手機音檔（1.1.0 新增）**：播放你自己手機裡已有的詩歌音檔，按號碼立刻播整首。
+  - 按「選擇詩歌資料夾」用系統的資料夾選擇器選資料夾（可選多個，會掃描子資料夾），按「重新掃描」更新。
+  - 支援 mp3、m4a、aac、ogg、opus、flac、wav、amr、3gp；wma 只有手機本身能解碼時才列出。
+  - 從檔名（以及資料夾名稱）讀出哪一本與第幾首，例如 `001.mp3`、`詩歌075.mp3`、`075 主耶穌我愛你.mp3`、`Hymn 12.mp3`、`補461`、`補充本461`、`兒1205`、`大本123`、`新詩歌12`、`第75首 標題`、放在「補充本」資料夾裡的 `461.mp3`。號碼後面的文字當作歌名。
+  - 沒有號碼或判斷錯的檔案可按「修改」手動設定哪一本／第幾首／歌名；重新掃描後仍保留。沒有號碼的檔案列在最上面。
+  - 「點歌」按號碼時，若手機裡有這一首就立刻用內建播放器播放（背景、通知列、鎖定畫面控制，上一首／下一首依同一本的號碼順序）；沒有才打開官網影音美地，並會提示。可在「手機」頁關閉「優先播放手機音檔」（預設開啟）。
+  - 「全部播放」「隨機播放」、加入最愛，搜尋也會找手機音檔的歌名與檔名。
+  - **檔案是你自己的，只在手機上播放，不會上傳；播放手機音檔不使用網路。** 不需要儲存空間權限（使用系統資料夾選擇器 SAF，只能讀你選的資料夾）。索引存在 App 私有空間的 JSON 檔。
 - **點歌（號碼盤）**：選「詩歌／補充本／兒童詩歌」，用大數字鍵輸入號碼，按「開啟這首」。
   App 會在內建瀏覽器打開福音書房官方 **影音美地**（mygoodland.video）「詩歌伴奏」中包含這一首的網頁，
   自動捲到並點選「第 N 首」，由官網自己的播放器播放。可按「上一首／下一首」換歌。
@@ -37,13 +45,17 @@ A big-button hymn player. Everything comes from, and is streamed directly from, 
 App 只會連到 `twgbr.org.tw`、`twgbr.org`、`mygoodland.video` 這些官方網域；只在手機暫存「網頁連結與標題」，避免每次開啟都重新讀取官網，不會下載或保存音檔。
 
 ### 權限
-- `INTERNET`：從官網串流。
+- `INTERNET`：從官網串流（播放手機音檔不使用網路）。
 - `FOREGROUND_SERVICE`、`FOREGROUND_SERVICE_MEDIA_PLAYBACK`、`WAKE_LOCK`：關螢幕或切到背景時繼續播放試聽。
 - `POST_NOTIFICATIONS`：在通知列顯示播放控制（Android 13 以上會詢問一次）。
+
+不需要 `READ_EXTERNAL_STORAGE`／`READ_MEDIA_AUDIO`：手機音檔透過系統資料夾選擇器取得的永久讀取授權來讀取。
 
 沒有廣告、不追蹤、不蒐集任何資料。
 
 ### 限制
+- 手機音檔的號碼是從檔名猜的：像 `01 主耶穌我愛你.mp3` 這種「專輯曲目序號」也會被當成第 1 首，請用「修改」更正。同一本同一號有多個檔案時，會播放排序第一個。
+- 「附1–附6」等附錄詩歌不會自動辨識，可手動設定。
 - 依號碼播放「整首伴奏」需要影音美地訂閱；沒有訂閱只能用「試聽」（專輯精選片段）。
 - 影音美地網頁是在 App 內的瀏覽器播放；離開該畫面後是否繼續播放取決於官網播放器。
 - 「詩歌」本（1–780 首）的影音美地頁面只標「第 N 首」沒有歌名，所以這部分只能用號碼找。
@@ -64,6 +76,14 @@ LIVE=1 ./gradlew testDebugUnitTest --tests '*LiveSiteTest*'  # 實際連線官�
 ## English
 
 ### Features
+- **Phone files (new in 1.1.0)**: play hymn audio files already on your phone, full length, by number.
+  - *Choose hymn folder* opens the system folder picker (several folders allowed, subfolders scanned); *Rescan* refreshes.
+  - mp3, m4a, aac, ogg, opus, flac, wav, amr, 3gp; wma only if the device can decode it.
+  - The hymnal and number are read from the file name (and folder names): `001.mp3`, `詩歌075.mp3`, `075 主耶穌我愛你.mp3`, `Hymn 12.mp3`, `補461`, `補充本461`, `兒1205`, `大本123`, `新詩歌12`, `第75首 title`, `Supplement 461`, `S461`, or `461.mp3` inside a `補充本` folder. Text after the number becomes the title.
+  - Files without a number are listed first; *Edit* sets hymnal / number / title by hand (kept across rescans).
+  - The number pad plays your file at once with the built-in player (background, notification and lock-screen controls, previous/next in number order within the hymnal); otherwise it opens mygoodland.video and says so. Setting *Prefer phone files* (default on).
+  - *Play all*, *Shuffle*, favorites, and search over local titles and file names.
+  - **Your files stay on your phone; nothing is uploaded and no internet is used for local playback.** No storage permission (Storage Access Framework). The index is a JSON file in app-private storage.
 - **Number pad**: choose Hymns / Supplement / Children, type the number with big keys and tap *Open hymn*.
   The official **mygoodland.video** "hymn accompaniment" page that holds that hymn opens in an in-app browser,
   scrolled to and tapping "No. N", so the site's own player plays it. *Previous / Next* step through hymns.
@@ -78,10 +98,11 @@ LIVE=1 ./gradlew testDebugUnitTest --tests '*LiveSiteTest*'  # 實際連線官�
 - Large text and big buttons.
 
 ### Permissions
-`INTERNET`; `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, `WAKE_LOCK` for background playback;
+`INTERNET` (not used for phone files); `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, `WAKE_LOCK` for background playback;
 `POST_NOTIFICATIONS` for the playback notification. No ads, no tracking, no data collection.
 
 ### Limitations
+- Numbers in phone files are guessed from names; album track numbers like `01 title.mp3` are read as hymn 1 — fix them with *Edit*. If several files share a hymnal+number, the first one is played. Appendix hymns (附1–6) need manual setting.
 - Full accompaniments by number require a mygoodland.video subscription; without one only album previews play.
 - The main *Hymns* book pages on mygoodland.video show only "No. N" (no titles), so those are found by number.
 - Some albums have no preview on the official site.

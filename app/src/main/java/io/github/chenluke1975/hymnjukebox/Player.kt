@@ -5,7 +5,13 @@ import android.os.Looper
 
 /** Shared queue/state between the UI and [PlayerService] (same process, main thread). */
 object Player {
-    data class Item(val album: Album)
+    /** Either an official album preview (streamed) or a file on the phone (content:// URI). */
+    data class Item(val title: String, val album: Album? = null, val localUri: String? = null) {
+        val isLocal: Boolean get() = localUri != null
+        companion object {
+            fun of(a: Album) = Item(a.title, album = a)
+        }
+    }
 
     enum class Status { IDLE, LOADING, PLAYING, PAUSED, ERROR }
 

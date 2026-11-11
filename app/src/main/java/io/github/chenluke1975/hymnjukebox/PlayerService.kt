@@ -16,6 +16,7 @@ import android.media.MediaMetadata
 import android.media.MediaPlayer
 import android.media.session.MediaSession
 import android.media.session.PlaybackState
+import android.net.Uri
 import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
@@ -93,9 +94,17 @@ class PlayerService : Service() {
         val item = Player.queue[i]
         val gen = ++generation
         releasePlayer()
+        val local = item.localUri
+        if (local != null) {
+            // The user's own file: played straight from the phone, no network.
+            setStatus(Player.Status.LOADING, getString(R.string.status_loading_local))
+            startStream(Uri.parse(local), gen, true)
+            return
+        }
+        val album = item.album ?: run { stopAll(); return }
         setStatus(Player.Status.LOADING, getString(R.string.status_loading))
         io.execute {
-            val detail = try { catalog.albumDetail(item.album) } catch (e: Exception) { null }
+            val detail = try { catalog.albumDetail(album) } catch (e: Exception) { null }
             val url = detail?.mp3
             android.os.Handler(mainLooper).post {
                 if (gen != generation) return@post
@@ -103,12 +112,12 @@ class PlayerService : Service() {
                     setStatus(Player.Status.ERROR, getString(if (detail == null) R.string.status_net_error else R.string.status_no_preview))
                     return@post
                 }
-                startStream(url, gen)
+                startStream(Uri.parse(url), gen, false)
             }
         }
     }
 
-    private fun startStream(url: String, gen: Int) {
+    private fun startStream(uri: Uri, gen: Int, local: Boolean) {
         val p = MediaPlayer()
         mp = p
         p.setAudioAttributes(AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA)
@@ -116,19 +125,19 @@ class PlayerService : Service() {
         p.setWakeMode(this, PowerManager.PARTIAL_WAKE_LOCK)
         p.setOnPreparedListener {
             if (gen != generation) return@setOnPreparedListener
-            if (requestFocus()) { it.start(); setStatus(Player.Status.PLAYING, "") }
+            if (requestFocus()) { it.start(); setStatus(Player.Status.PLAYING, if (local) getString(R.string.status_playing_local) else "") }
             else setStatus(Player.Status.PAUSED, "")
         }
         p.setOnCompletionListener { if (gen == generation) next(auto = true) }
         p.setOnErrorListener { _, _, _ ->
-            if (gen == generation) setStatus(Player.Status.ERROR, getString(R.string.status_net_error))
+            if (gen == generation) setStatus(Player.Status.ERROR, getString(if (local) R.string.status_local_error else R.string.status_net_error))
             true
         }
         try {
-            p.setDataSource(url)
+            if (local) p.setDataSource(this, uri) else p.setDataSource(uri.toString())
             p.prepareAsync()
         } catch (e: Exception) {
-            setStatus(Player.Status.ERROR, getString(R.string.status_net_error))
+            setStatus(Player.Status.ERROR, getString(if (local) R.string.status_local_error else R.string.status_net_error))
         }
     }
 
@@ -137,7 +146,7 @@ class PlayerService : Service() {
         when {
             p != null && Player.status == Player.Status.PLAYING && !forcePlay -> pause()
             p != null && Player.status == Player.Status.PAUSED -> {
-                if (requestFocus()) { p.start(); setStatus(Player.Status.PLAYING, "") }
+                if (requestFocus()) { p.start(); setStatus(Player.Status.PLAYING, if (Player.current?.isLocal == true) getString(R.string.status_playing_local) else "") }
             }
             Player.status == Player.Status.ERROR || p == null -> if (Player.queue.isNotEmpty()) playIndex(maxOf(Player.index, 0))
         }
@@ -211,7 +220,7 @@ class PlayerService : Service() {
     }
 
     private fun updateSession() {
-        val title = Player.current?.album?.title ?: getString(R.string.app_name)
+        val title = Player.current?.title ?: getString(R.string.app_name)
         session.setMetadata(MediaMetadata.Builder()
             .putString(MediaMetadata.METADATA_KEY_TITLE, title)
             .putString(MediaMetadata.METADATA_KEY_ARTIST, getString(R.string.owner_short)).build())
@@ -237,7 +246,7 @@ class PlayerService : Service() {
         val open = PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), PendingIntent.FLAG_IMMUTABLE)
         val playing = Player.status == Player.Status.PLAYING
-        val title = Player.current?.album?.title ?: getString(R.string.app_name)
+        val title = Player.current?.title ?: getString(R.string.app_name)
         val text = Player.message.ifEmpty { getString(R.string.streamed_from) }
         return Notification.Builder(this, CHANNEL)
             .setSmallIcon(R.drawable.ic_note)

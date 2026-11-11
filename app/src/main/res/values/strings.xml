@@ -3,7 +3,7 @@
     <string name="app_name">詩歌點唱機</string>
     <string name="channel_name">播放控制</string>
     <string name="owner_short">台灣福音書房</string>
-    <string name="owner_note">詩歌內容屬台灣福音書房所有，本 App 只從其官方網站串流播放，不收錄任何音檔、歌詞或樂譜。</string>
+    <string name="owner_note">官網詩歌屬台灣福音書房所有，只從其官網串流；「手機」裡的音檔是你自己的，只在手機上播放，不會上傳。</string>
     <string name="streamed_from">從台灣福音書房官網串流</string>
 
     <string name="tab_number">點歌</string>
@@ -20,7 +20,7 @@
     <string name="fav_removed">已從最愛移除</string>
     <string name="number_placeholder">%1$s 第＿首</string>
     <string name="hymn_title">%1$s 第 %2$d 首</string>
-    <string name="number_hint">先選「詩歌／補充本／兒童詩歌」，再按號碼，然後按「開啟這首」。會打開福音書房「影音美地」的詩歌伴奏網頁並自動找到這一首；那裡需要登入並訂閱才能播放。</string>
+    <string name="number_hint">先選哪一本，再按號碼，然後按「開啟這首」。手機裡有這首的音檔就立刻播放整首；沒有的話會打開福音書房「影音美地」的伴奏網頁（需登入並訂閱）。</string>
 
     <string name="prev_hymn">◀ 上一首</string>
     <string name="next_hymn">下一首 ▶</string>
@@ -79,8 +79,48 @@
     <string name="stop">停止</string>
 
     <string name="about_title">關於詩歌點唱機</string>
-    <string name="about_text">詩歌點唱機是一個簡單的大按鈕播放器，內容全部來自財團法人台灣福音書房的官方網站，版權屬於台灣福音書房。本 App 不收錄、不下載、不轉存任何音檔、歌詞或樂譜。\n\n• 點歌：輸入詩歌號碼，打開官方「影音美地」(mygoodland.video) 的詩歌伴奏網頁並找到該首。影音美地是福音書房的付費訂閱服務，需要用你自己的帳號登入並訂閱才能播放。\n\n• 試聽：播放福音書房商店 (twgbr.org.tw) 各詩歌專輯公開的「線上試聽」片段，免費、免登入。\n\n• 若想免費依號碼聽整本詩歌伴奏，可使用福音書房官方的 App。\n\n本 App 為個人開發的開源軟體 (MIT)，與台灣福音書房無關，也不是其官方產品。</string>
+    <string name="about_text">詩歌點唱機是一個簡單的大按鈕播放器，內容全部來自財團法人台灣福音書房的官方網站，版權屬於台灣福音書房。本 App 不收錄、不下載、不轉存任何音檔、歌詞或樂譜。\n\n• 點歌：輸入詩歌號碼，打開官方「影音美地」(mygoodland.video) 的詩歌伴奏網頁並找到該首。影音美地是福音書房的付費訂閱服務，需要用你自己的帳號登入並訂閱才能播放。\n\n• 試聽：播放福音書房商店 (twgbr.org.tw) 各詩歌專輯公開的「線上試聽」片段，免費、免登入。\n\n• 手機：播放你自己手機裡的詩歌音檔（例如自己購買或錄製的）。用系統的資料夾選擇器選資料夾，App 只讀取你選的資料夾，不需要儲存空間權限；檔案只在手機上播放，不會上傳，播放時也不使用網路。在「點歌」按號碼時，若手機裡有這一首就立刻播放整首（可在「手機」頁關閉「優先播放手機音檔」）。\n\n• 若想免費依號碼聽整本詩歌伴奏，可使用福音書房官方的 App。\n\n本 App 為個人開發的開源軟體 (MIT)，與台灣福音書房無關，也不是其官方產品。</string>
     <string name="ok">知道了</string>
     <string name="open_official">開啟官網</string>
     <string name="no_browser">找不到瀏覽器</string>
+    <string name="tab_local">手機</string>
+    <string name="playing_local_toast">播放手機音檔：%1$s</string>
+    <string name="no_local_fallback">手機裡沒有「%1$s 第 %2$d 首」，改開官網影音美地</string>
+    <string name="src_local">手機音檔</string>
+    <string name="local_missing">找不到這個檔案，請到「手機」按「重新掃描」</string>
+    <string name="local_intro">播放你自己手機裡的詩歌音檔。選擇放詩歌的資料夾後，App 會從檔名讀出詩歌號碼，在「點歌」按號碼就能立刻播整首。檔案只在你的手機裡播放，不會上傳，也不需要網路。</string>
+    <string name="pick_folder">📁 選擇詩歌資料夾</string>
+    <string name="remove_folder">移除</string>
+    <string name="remove_folder_q">不再使用資料夾「%1$s」嗎？（不會刪除任何檔案）</string>
+    <string name="rescan">🔄 重新掃描</string>
+    <string name="prefer_local_on">✔ 優先播放手機音檔</string>
+    <string name="prefer_local_off">✘ 優先播放手機音檔（已關）</string>
+    <string name="play_all">▶ 全部播放</string>
+    <string name="shuffle">🔀 隨機播放</string>
+    <string name="local_filter_hint">輸入歌名、檔名或號碼篩選</string>
+    <string name="no_number_section">⚠ 沒有號碼的檔案（%1$d）— 按「修改」補上號碼</string>
+    <string name="numbered_section">已編號的詩歌（%1$d）</string>
+    <string name="scanning">掃描中，請稍候…</string>
+    <string name="no_folders">還沒有選擇資料夾。請按上面的「選擇詩歌資料夾」。</string>
+    <string name="local_empty">資料夾裡沒有找到音檔</string>
+    <string name="local_count">共 %1$d 個音檔，其中 %2$d 個有號碼</string>
+    <string name="edit">✎ 修改</string>
+    <string name="manual_mark">（手動設定）</string>
+    <string name="edit_book">哪一本</string>
+    <string name="edit_number">第幾首</string>
+    <string name="edit_number_hint">空白 = 沒有號碼</string>
+    <string name="edit_title">歌名</string>
+    <string name="edit_song">修改這個檔案</string>
+    <string name="save">儲存</string>
+    <string name="reset_auto">改回自動判斷</string>
+    <string name="no_folder_picker">這支手機沒有資料夾選擇器</string>
+    <string name="folder_failed">無法使用這個資料夾，請換一個</string>
+    <string name="scan_progress">已找到 %1$d 個音檔…</string>
+    <string name="scan_done">掃描完成：找到 %1$d 個音檔</string>
+    <string name="scan_errors">無法讀取：%1$s（可移除後重新選擇）</string>
+    <string name="no_number">（沒有號碼）</string>
+    <string name="internal_storage">內部儲存空間</string>
+    <string name="status_loading_local">開啟手機音檔…</string>
+    <string name="status_playing_local">播放中（手機音檔，不用網路）</string>
+    <string name="status_local_error">無法播放這個檔案（格式不支援或檔案已移動）</string>
 </resources>

@@ -1,6 +1,7 @@
-<p>A big-button hymn jukebox. Everything comes from and is streamed directly from the official websites of <b>Taiwan Gospel Book Room</b>; the app bundles no audio, lyrics or scores.</p>
+<p>A big-button hymn jukebox. Plays hymn audio files already on your phone, or streams directly from the official websites of <b>Taiwan Gospel Book Room</b>; the app bundles no audio, lyrics or scores.</p>
 <p><b>Features</b></p>
 <ul>
+<li><b>Phone files</b>: pick the folders holding your hymn audio; hymn numbers are read from file names (e.g. "075 title.mp3", "補461", "兒1205") so the number pad plays the full hymn at once. Manual fixes, play all, shuffle. Files stay on the phone, nothing is uploaded, no internet and no storage permission needed.</li>
 <li><b>Number pad</b>: pick Hymns / Supplement / Children, type a number and open the official mygoodland.video accompaniment page at that hymn. mygoodland.video is a paid subscription service; sign in with your own account to play.</li>
 <li><b>Previews</b>: free official online previews of TWGBR hymn albums, with a queue and background playback.</li>
 <li><b>Title search</b> over albums, tracks and the hymn titles shown on the official pages.</li>

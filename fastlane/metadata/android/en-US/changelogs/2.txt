@@ -1,0 +1,1 @@
+1.1.0: play hymn audio files already on your phone. Pick folders; hymn numbers are read from file names (e.g. 075 title.mp3, 補461, 兒1205) so the number pad plays the full hymn at once. Manual number fixes, play all / shuffle, favorites and title search. Files stay on the phone, nothing is uploaded, no internet and no storage permission needed.
